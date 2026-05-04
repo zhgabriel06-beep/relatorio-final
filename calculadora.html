@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Calculadora - Trote Solidário 2026</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Trote 2026</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="introducao.html">Introdução</a></li>
+      <li><a href="formato.html">Formato</a></li>
+      <li><a href="equipes.html">Equipes</a></li>
+      <li><a href="provas.html">Provas e Metas</a></li>
+      <li><a href="integracao.html">Integração</a></li>
+      <li><a href="cronograma.html">Cronograma</a></li>
+      <li><a href="calculadora.html">Calculadora</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="header-badge">Uni-FACEF · 2026</div>
+  <h1>🧮 <span>Calculadora</span></h1>
+  <h2>Simule a pontuação da sua equipe</h2>
+  <svg class="header-wave" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C360,70 1080,-10 1440,30 L1440,60 L0,60 Z" fill="#fdf9f0"/>
+  </svg>
+</header>
+
+<main>
+
+  <div class="card">
+    <div class="section-label">Passo 1</div>
+    <h2 class="section-title">Selecione sua Equipe</h2>
+    <div class="select-wrapper">
+      <label>Cor da equipe:</label>
+      <select id="corEquipe">
+        <option value="amarela">🟡 Amarela</option>
+        <option value="cinza">⬜ Cinza</option>
+        <option value="laranja">🟠 Laranja</option>
+        <option value="marron">🟤 Laranja Escuro</option>
+        <option value="preta">⬛ Preta</option>
+        <option value="vermelha">🔴 Vermelha</option>
+        <option value="roxo">🟣 Roxo</option>
+        <option value="rosa">🩷 Rosa</option>
+        <option value="verde">🟢 Verde</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">Passo 2</div>
+    <h2 class="section-title">Arrecadações Especiais</h2>
+    <p class="texto-intro">Itens que geram pontuação especial para a equipe.</p>
+    <div class="calc-grid">
+      <div class="calc-item">
+        <label>📦 Kit de Alimentação completo</label>
+        <input type="number" id="kitAlimentacao" value="0" min="0">
+      </div>
+      <div class="calc-item">
+        <label>🩸 Doação de Sangue</label>
+        <input type="number" id="qtdeSangue" value="0" min="0">
+      </div>
+      <div class="calc-item">
+        <label>🥛 Caixas de Leite</label>
+        <input type="number" id="caixasLeite" value="0" min="0">
+      </div>
+      <div class="calc-item">
+        <label>🍼 Suplementos</label>
+        <input type="number" id="qtdeSuplementos" value="0" min="0">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">Passo 3</div>
+    <h2 class="section-title">Itens Avulsos</h2>
+    <p class="texto-intro">Itens fora do kit completo, pontuados individualmente.</p>
+    <div class="calc-grid">
+      <div class="calc-item">
+        <label>🌾 Arroz (5kg) — 10 pts</label>
+        <input type="number" id="qtdeArroz" value="0" min="0">
+      </div>
+      <div class="calc-item">
+        <label>🫘 Feijão (2kg) — 8 pts</label>
+        <input type="number" id="qtdeFeijao" value="0" min="0">
+      </div>
+      <div class="calc-item">
+        <label>🫙 Óleo (900ml) — 4 pts</label>
+        <input type="number" id="qtdeOleo" value="0" min="0">
+      </div>
+      <div class="calc-item">
+        <label>🍝 Macarrão (500g) — 2 pts</label>
+        <input type="number" id="qtdeMacarrao" value="0" min="0">
+      </div>
+    </div>
+
+    <button onclick="calcularPontos()" style="margin-top:20px;width:100%;padding:14px;font-size:1rem;">
+      ⚡ Calcular Pontos
+    </button>
+
+    <div id="resultado" class="resultado-box" style="display:none;"></div>
+  </div>
+
+</main>
+
+<footer>
+  <p><strong>Coordenação Trote Solidário 2026</strong></p>
+  <p>trotesolidario@facef.br</p>
+  <p style="margin-top:10px;">Uni-FACEF — Centro Universitário Municipal de Franca</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function calcularPontos() {
+  const arroz = parseInt(document.getElementById('qtdeArroz').value) || 0;
+  const feijao = parseInt(document.getElementById('qtdeFeijao').value) || 0;
+  const oleo = parseInt(document.getElementById('qtdeOleo').value) || 0;
+  const macarrao = parseInt(document.getElementById('qtdeMacarrao').value) || 0;
+  const kit = parseInt(document.getElementById('kitAlimentacao').value) || 0;
+  const sangue = parseInt(document.getElementById('qtdeSangue').value) || 0;
+  const leite = parseInt(document.getElementById('caixasLeite').value) || 0;
+  const suplementos = parseInt(document.getElementById('qtdeSuplementos').value) || 0;
+
+  const pontosAvulsos = (arroz * 10) + (feijao * 8) + (oleo * 4) + (macarrao * 2);
+  const pontosEspeciais = (kit * 50) + (sangue * 100) + (leite * 5) + (suplementos * 30);
+  const total = pontosAvulsos + pontosEspeciais;
+
+  const box = document.getElementById('resultado');
+  box.style.display = 'block';
+  box.innerHTML = `
+    <div style="font-size:0.85rem;color:var(--texto-suave);margin-bottom:8px;">Resultado da simulação</div>
+    <div style="font-size:2rem;font-family:'Playfair Display',serif;color:var(--azul);">🏅 ${total} pontos</div>
+    <div style="margin-top:10px;font-size:0.85rem;color:var(--texto-suave);">
+      Itens avulsos: ${pontosAvulsos} pts &nbsp;|&nbsp; Arrecadações especiais: ${pontosEspeciais} pts
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
