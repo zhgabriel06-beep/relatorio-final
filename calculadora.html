@@ -3,6 +3,7 @@
 <head>
   <title>Calculadora - Trote Solidário 2026</title>
   <meta charset="UTF-8">
+  <script src="script.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -118,31 +119,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script>
-function calcularPontos() {
-  const arroz = parseInt(document.getElementById('qtdeArroz').value) || 0;
-  const feijao = parseInt(document.getElementById('qtdeFeijao').value) || 0;
-  const oleo = parseInt(document.getElementById('qtdeOleo').value) || 0;
-  const macarrao = parseInt(document.getElementById('qtdeMacarrao').value) || 0;
-  const kit = parseInt(document.getElementById('kitAlimentacao').value) || 0;
-  const sangue = parseInt(document.getElementById('qtdeSangue').value) || 0;
-  const leite = parseInt(document.getElementById('caixasLeite').value) || 0;
-  const suplementos = parseInt(document.getElementById('qtdeSuplementos').value) || 0;
-
-  const pontosAvulsos = (arroz * 10) + (feijao * 8) + (oleo * 4) + (macarrao * 2);
-  const pontosEspeciais = (kit * 50) + (sangue * 100) + (leite * 5) + (suplementos * 30);
-  const total = pontosAvulsos + pontosEspeciais;
-
-  const box = document.getElementById('resultado');
-  box.style.display = 'block';
-  box.innerHTML = `
-    <div style="font-size:0.85rem;color:var(--texto-suave);margin-bottom:8px;">Resultado da simulação</div>
-    <div style="font-size:2rem;font-family:'Playfair Display',serif;color:var(--azul);">🏅 ${total} pontos</div>
-    <div style="margin-top:10px;font-size:0.85rem;color:var(--texto-suave);">
-      Itens avulsos: ${pontosAvulsos} pts &nbsp;|&nbsp; Arrecadações especiais: ${pontosEspeciais} pts
-    </div>
-  `;
-}
-</script>
 </body>
 </html>
